@@ -20,7 +20,7 @@
                                 type="password"
                                 id="password"
                                 class="form-control"
-                                v-model="userData.password"
+                                v-model.lazy="userData.password"
                                 >
                     </div>
                     <div class="form-group">
@@ -103,6 +103,7 @@
                         {{ priority }}
                         </option>
                     </select>
+                    <app-switch v-model="dataSwitch"></app-switch>
                 </div>
             </div>
             <hr>
@@ -133,7 +134,7 @@
                         </ul>
                         <p>Gender: {{gender}}</p>
                         <p>Priority: {{selectedPriority}}</p>
-                        <p>Switched:</p>
+                        <p>Switched: {{dataSwitch}}</p>
                     </div>
                 </div>
             </div>
@@ -142,6 +143,8 @@
 </template>
 
 <script>
+    import Switch from './Switch.vue';
+
     export default {
       data: function (){
         return {
@@ -154,8 +157,12 @@
           sendMail: [],
           gender: 'Male',
           selectedPriority: 'Medium',
-          priorities: ['High', 'Medium', 'Low']
+          priorities: ['High', 'Medium', 'Low'],
+          dataSwitch: true,
         }
+      },
+      components: {
+        appSwitch: Switch,
       }
     }
 </script>
